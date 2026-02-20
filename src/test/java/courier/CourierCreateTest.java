@@ -24,7 +24,23 @@ public class CourierCreateTest {
             courierClient.delete(courierId);
         }
     }
+    @Test
+    @Description("Нельзя создать курьера без логина")
+    public void cannotCreateCourierWithoutLogin() {
+        CourierCreation courier = new CourierCreation(null, "pass123", "Name");
 
+        courierClient.create(courier)
+                .statusCode(SC_BAD_REQUEST);
+    }
+
+    @Test
+    @Description("Нельзя создать курьера без пароля")
+    public void cannotCreateCourierWithoutPassword() {
+        CourierCreation courier = new CourierCreation("login123", null, "Name");
+
+        courierClient.create(courier)
+                .statusCode(SC_BAD_REQUEST);
+    }
     @Test
     @Description("Проверка успешного создания курьера")
     public void courierCanBeCreated() {

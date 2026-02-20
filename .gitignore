@@ -1,11 +1,15 @@
-target/
-!target/allure-report/
+# Игнорируем весь target
+target/*
+
+# Разрешаем пушить только папку с Allure отчетом
+!target/site/
+!target/site/allure-maven-plugin/
+
 .allure/
+
 # IntelliJ IDEA
 .idea/
 *.iml
-*.ipr
-*.iws
 out/
 
 # Logs
